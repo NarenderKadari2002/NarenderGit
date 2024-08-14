@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "clientTransactionId": {
+      "type": "string",
+      "pattern": "^[0-9]{10}$"
+    },
+    "transactionType": {
+      "type": "string"
+    },
+    "account": {
+      "type": "string",
+      "pattern": "^[0-9]{12}$"
+    },
+    "creditCardAccount": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "integer"
+    },
+    "valueDate": {
+      "type": "string"
+    },
+    "creditCardAccountNo": {
+      "type": "string",
+       "pattern": "^[0-9]{16}$"
+    },
+    "processedAt": {
+      "type": "string"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "channel": {
+      "type": "string"
+    },
+    "netUsername": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "clientTransactionId",
+    "transactionType",
+    "account",
+    "creditCardAccount",
+    "amount",
+    "valueDate",
+    "creditCardAccountNo",
+    "processedAt",
+    "currency",
+    "channel",
+    "netUsername"
+  ]
+}
