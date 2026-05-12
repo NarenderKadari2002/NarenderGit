@@ -1,0 +1,11 @@
+
+
+CREATE COMPUTE MODULE Pub_Sub_msg_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		SET OutputRoot = InputRoot; --- We needto give topic string in the Mq input node not the topic name to publish the messages. Here a topic will be created with the topic string and whatwver the queues subscribed to this topic can inherit the message from topic. 
+		
+		Return True;
+	END;
+END MODULE;

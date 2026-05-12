@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="Root">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="element1"/>
+        <xsd:element ref="element2"/>
+        <xsd:element ref="element3"/>
+        <xsd:element ref="element4"/>
+        <xsd:element ref="element5"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="element1" type="xsd:string"/>
+  <xsd:element name="element2" type="xsd:string"/>
+  <xsd:element name="element3" type="xsd:string"/>
+  <xsd:element name="element4" type="xsd:string"/>
+  <xsd:element name="element5" type="xsd:string"/>
+</xsd:schema>

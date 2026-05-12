@@ -1,0 +1,11 @@
+
+
+CREATE COMPUTE MODULE DLDL_msg_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		SET OutputRoot.XMLNSC.Result = 'Parsing is successfull';
+		
+		RETURN TRUE;
+	END;
+END MODULE;

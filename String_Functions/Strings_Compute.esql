@@ -1,0 +1,49 @@
+
+
+CREATE COMPUTE MODULE Strings_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		DECLARE inref REFERENCE TO InputRoot.XMLNSC.data;
+		
+		DECLARE bool BOOLEAN;
+		DECLARE str CHARACTER;
+		DECLARE num INTEGER;
+		
+		--set bool=contains(inref.name,'ren'); -- contains used to search the search string in the source string and always returns boolean value
+		--set bool = ENDSWITH(inref.name,'er'); -- endswith is used to check whether the source string endswith search string or not and always returns boolean value.
+		--set bool = STARTSWITH(inref.name,'Na');  -- startswith is used to check whether the source string startswith search string or not and always returns boolean value.
+		--set str = LEFT(inref.name,3); -- LEFT is used to get the characters from source string by mentioning number of characters needed from source string and the counting always starts from left.
+		--set str = RIGHT(inref.name,3); -- RIGHT is used to get the characters from source string by mentioning number of characters needed from source string and the counting always starts from right.
+		--set str= LENGTH(inref.name); -- length is used to get the length of the source string and always returns integer value.
+		--set str = LCASE(inref.name); -- LCASE/LOWER is used to convert upper case characters in the source string to lower case characters and always returns string value.
+		--set str = UCASE(inref.name);-- UCASE/UPPER is used to convert lower case characters in the source string to upper case characters and always returns string value.
+		--set str = LTRIM(inref.name); -- LTRIM is used to trim all the spaces from the left side of source string and always returns string;
+		--set str = RTRIM(inref.name);-- RTRIM is used to trim all the spaces from the right side of source string and always returns string;
+		--set str = TRIM(inref.name); -- TRIM is used to trim the spaces on left and right side of the source string but not the spaces which are in middle of the string.
+		--set str = TRIM('der' from inref.name);-- TRIM can also used to remove particular characters from the source string from the end of string only when there are no spaces on left and right side of source string.
+		--set str = TRIM(/*TRAILING*/ LEADING'ran' from inref.name); --TRIM can also used to remove particular characters from starting and ending of source string it is case sensitive and can remove multiple characters at a time.
+		--set str = OVERLAY(inref.name PLACING 'kadari' from 5 for 3); -- Overlay is used to replace source string with a sub string based on position and how many number of charecters to be replaced and returns string.
+		--set num = POSITION('r' in inref.name from 3); --Position is used to get the position of particular character from particularposition.		
+		--set num = POSITION('e' in inref.name /*from 1*/ repeat 2); -- This will give the position of second e.
+		--set num = POSITION('r' in inref.name /*from 3*/ repeat -2); -- This will give the position of second 'r' position from the backward. We can use this to get the positions of words too.
+		--set str = REPLACE(inref.name,'r','A'); --Replace is used to replace all the specific characters in the source string and always returns string.
+		--set str = REPLICATE(inref.name,5); --Replicate is used to replicate the characters or strings based on given value.
+		--set str = SUBSTRING(inref.name from 3 for 4); --substring is used to get the string from source string based on number of characters needed and position.
+		set str = SUBSTRING(inref.name AFTER /*BEFORE*/ 'Nar' for 4);--This is used to get the string before and after.
+		--set str = SUBSTR(inref.name,3); --This works same as substring however wwe wont use from and for defining position and number of characters.
+		
+		/*if bool = 'TRUE' then
+		 
+		SET OutputRoot.XMLNSC.data = 'success';
+		
+		ELSE
+			SET OutputRoot.XMLNSC.data = 'failure';
+		
+	end IF;*/ 
+		
+		SET OutputRoot.XMLNSC.DATA=str;
+		
+		RETURN TRUE;	
+	END;
+END MODULE;

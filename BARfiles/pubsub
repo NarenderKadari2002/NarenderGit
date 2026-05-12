@@ -1,0 +1,75 @@
+ MQ_Pub_Sub.appzip (11/19/25 7:31 PM):
+    application.descriptor (11/19/25 7:31 PM):
+    Pub_Sub_msg_Compute.esql (11/19/25 7:31 PM):
+    Pub_Sub_msg.msgflow (11/19/25 7:31 PM):
+    Deployment descriptor:
+      startMode
+      Pub_Sub_msg#additionalInstances
+      Pub_Sub_msg#notificationThresholdMsgsPerSec
+      Pub_Sub_msg#maximumRateMsgsPerSec
+      Pub_Sub_msg#processingTimeoutSec
+      Pub_Sub_msg#processingTimeoutAction
+      Pub_Sub_msg#wlmPolicy
+      Pub_Sub_msg#commitCount
+      Pub_Sub_msg#commitInterval
+      Pub_Sub_msg#coordinatedTransaction
+      Pub_Sub_msg#consumerPolicySet
+      Pub_Sub_msg#providerPolicySet
+      Pub_Sub_msg#consumerPolicySetBindings
+      Pub_Sub_msg#providerPolicySetBindings
+      Pub_Sub_msg#securityProfileName
+      Pub_Sub_msg#monitoringProfile
+      Pub_Sub_msg#startMode
+      Pub_Sub_msg#startInstancesWhenFlowStarts
+      Pub_Sub_msg#MQ Input.queueName = T1
+      Pub_Sub_msg#MQ Input.connection
+      Pub_Sub_msg#MQ Input.destinationQueueManagerName = QM1
+      Pub_Sub_msg#MQ Input.queueManagerHostname
+      Pub_Sub_msg#MQ Input.listenerPortNumber
+      Pub_Sub_msg#MQ Input.channelName
+      Pub_Sub_msg#MQ Input.securityIdentity
+      Pub_Sub_msg#MQ Input.useSSL
+      Pub_Sub_msg#MQ Input.SSLPeerName
+      Pub_Sub_msg#MQ Input.SSLCipherSpec
+      Pub_Sub_msg#MQ Input.SSLCertificateLabel
+      Pub_Sub_msg#MQ Input.serializationToken
+      Pub_Sub_msg#MQ Input.topicProperty = Pub_Sub
+      Pub_Sub_msg#MQ Input.resetBrowseTimeout
+      Pub_Sub_msg#MQ Input.validateMaster
+      Pub_Sub_msg#MQ Input.securityProfileName
+      Pub_Sub_msg#MQ Input.componentLevel
+      Pub_Sub_msg#MQ Input.additionalInstances
+      Pub_Sub_msg#MQ Input.policyUrl
+      Pub_Sub_msg#Compute.dataSource
+      Pub_Sub_msg#Compute.connectDatasourceBeforeFlowStarts
+      Pub_Sub_msg#Compute.validateMaster
+      Pub_Sub_msg#Publication.connection
+      Pub_Sub_msg#Publication.destinationQueueManagerName = QM1
+      Pub_Sub_msg#Publication.queueManagerHostname
+      Pub_Sub_msg#Publication.listenerPortNumber
+      Pub_Sub_msg#Publication.channelName
+      Pub_Sub_msg#Publication.securityIdentity
+      Pub_Sub_msg#Publication.useSSL
+      Pub_Sub_msg#Publication.SSLPeerName
+      Pub_Sub_msg#Publication.SSLCipherSpec
+      Pub_Sub_msg#Publication.policyUrl
+      Pub_Sub_msg#MQ Output.queueName = T3
+      Pub_Sub_msg#MQ Output.connection
+      Pub_Sub_msg#MQ Output.destinationQueueManagerName = QM1
+      Pub_Sub_msg#MQ Output.queueManagerHostname
+      Pub_Sub_msg#MQ Output.listenerPortNumber
+      Pub_Sub_msg#MQ Output.channelName
+      Pub_Sub_msg#MQ Output.securityIdentity
+      Pub_Sub_msg#MQ Output.useSSL
+      Pub_Sub_msg#MQ Output.SSLPeerName
+      Pub_Sub_msg#MQ Output.SSLCipherSpec
+      Pub_Sub_msg#MQ Output.SSLCertificateLabel
+      Pub_Sub_msg#MQ Output.queueManagerName
+      Pub_Sub_msg#MQ Output.replyToQMgr
+      Pub_Sub_msg#MQ Output.replyToQ
+      Pub_Sub_msg#MQ Output.validateMaster
+      Pub_Sub_msg#MQ Output.securityProfileName
+      Pub_Sub_msg#MQ Output.policyUrl
+      Pub_Sub_msg#MQ Output.AddRequestToGroup
+      Pub_Sub_msg#MQ Output.GroupRequestFolderName
+      Pub_Sub_msg#MQ Output.GroupRequestTimeout

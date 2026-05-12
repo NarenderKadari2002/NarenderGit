@@ -1,0 +1,33 @@
+
+
+CREATE COMPUTE MODULE func_proc_Compute1
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+	/*	DECLARE exref REFERENCE TO InputExceptionList.[<];
+		
+		create FIELD OutputRoot.XMLNSC.Exception;
+		
+		DECLARE outref REFERENCE TO OutputRoot.XMLNSC.Exception;
+		
+		
+			
+			WHILE LASTMOVE(exref) DO
+				
+					IF EXISTS(exref.Text[])=True or EXISTS(exref.Insert[])=True  THEN
+						
+						set outref.ErroDesc =COALESCE(exref.Text||outref.ErroDesc,exref.Text);
+						 MOVE exref LASTCHILD;
+						 
+					ELSE
+						MOVE exref LASTCHILD;
+						 
+					END IF;
+				
+			END WHILE;*/
+			
+			set OutputRoot.XMLNSC.Exception= InputExceptionList;	
+			
+	RETURN TRUE;
+	END;
+END MODULE;

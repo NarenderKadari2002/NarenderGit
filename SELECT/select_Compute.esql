@@ -1,0 +1,47 @@
+
+
+CREATE COMPUTE MODULE select_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+/*
+<Employees>
+    <Employee id="E101">
+        <Name>Ravi Kumar</Name>
+        <Department>IT</Department>
+        <Location>Hyderabad</Location>
+    </Employee>
+    <Employee id="E102">
+        <Name>Anita Sharma</Name>
+        <Department>HR</Department>
+        <Location>Mumbai</Location>
+    </Employee>
+    <Employee id="E103">
+        <Name>Vikram Reddy</Name>
+        <Department>Finance</Department>
+        <Location>Bangalore</Location>
+    </Employee>
+</Employees>
+*/
+DECLARE inref REFERENCE TO InputRoot.XMLNSC.Employees;
+
+CREATE FIELD OutputRoot.XMLNSC.NewEmployees;
+DECLARE Data ROW;
+
+DECLARE outref REFERENCE TO OutputRoot.XMLNSC.NewEmployees;
+
+--SET outref.Data[]= SELECT R FROM inref.Employee[] AS R ; --select function works same as of select db query. It will be helpful to get the particular data with out looping and writing extra code.
+
+--SET outref.Data[]= SELECT R.Name AS stdName.Name,R.Department AS stdDept.Department FROM inref.Employee[] AS R;
+
+--SET outref.Data[]= SELECT R FROM inref.Employee[] AS R where R.Name like 'Vikram%';
+
+--SET outref.Data[]= SELECT R FROM inref.Employee[] AS R where R.Location in ('Bangalore','Hyderabad');
+--SET outref.Data= THE(SELECT R FROM inref.Employee[] AS R where R.Location in ('Bangalore','Hyderabad')); --The is used to get the single value data or first condition/tag data.\
+
+--SET Data.NewData[] =  SELECT R.Employee[].id AS ID FROM inref.Employee[] AS R; 
+
+--SET outref.Data[]= SELECT cast(FIELDVALUE(R.id) AS INTEGER)*2 AS ID FROM inref.Employee[] AS R; 
+propagate to terminal '124';
+		RETURN TRUE;
+	END;
+END MODULE;

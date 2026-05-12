@@ -1,0 +1,12 @@
+
+
+Importing file: C:\Users\suman\AppData\Local\IBM\ACET12-config\12.0.3.0\configuration\org.eclipse.osgi\392\0\.cp\ibm\soap\soap.xsd
+
+
+Elapsed time processing this message definition file: 0.093 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+

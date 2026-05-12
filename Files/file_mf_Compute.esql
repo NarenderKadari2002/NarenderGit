@@ -1,0 +1,21 @@
+
+
+CREATE COMPUTE MODULE file_mf_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+/*	set OutputRoot.Properties.MessageSet='{Files}';
+		set OutputRoot.Properties.MessageType='{}:Item';
+		
+		Set OutputRoot.DFDL.Data.ItemId = InputRoot.Item.ItemID;
+		Set OutputRoot.DFDL.Data.Name = InputRoot.Item.Name;
+		Set OutputRoot.DFDL.Data.Quantity = InputRoot.Item.Quantity;
+		Set OutputRoot.DFDL.Data.Price = InputRoot.Item.Price;*/
+		
+		set OutputRoot= InputRoot;
+		
+		
+		
+		
+	END;
+END MODULE;

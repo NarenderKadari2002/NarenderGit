@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:csv="http://www.ibm.com/dfdl/CommaSeparatedFormat" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+
+
+    <xsd:import namespace="http://www.ibm.com/dfdl/CommaSeparatedFormat" schemaLocation="IBMdefined/CommaSeparatedFormat.xsd"/>
+    <xsd:annotation>
+		<xsd:appinfo source="http://www.ogf.org/dfdl/">
+			<dfdl:format documentFinalTerminatorCanBeMissing="yes" encoding="{$dfdl:encoding}" escapeSchemeRef="csv:CSVEscapeScheme" ref="csv:CommaSeparatedFormat"/>
+		</xsd:appinfo>
+	</xsd:annotation>
+
+
+	<xsd:element ibmSchExtn:docRoot="true" name="csv_schema">
+		<xsd:complexType>
+			<xsd:sequence dfdl:separator="">
+				<xsd:element dfdl:occursCountKind="implicit" dfdl:terminator="%CR;%LF;%WSP*;" maxOccurs="unbounded" name="EmployeeDetails">
+					<xsd:complexType>
+						<xsd:sequence dfdl:separatorSuppressionPolicy="trailingEmpty">
+							<xsd:element ibmDfdlExtn:sampleValue="1111" name="ID">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:minLength value="1"/>
+                    <xsd:maxLength value="4"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="+919346642978" name="PhoneNo">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:minLength value="13"/>
+                    <xsd:maxLength value="13"/>
+                    <xsd:pattern value="\+91\d{10}"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element ibmDfdlExtn:sampleValue="COIPN1002F" name="PAN">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:minLength value="10"/>
+                    <xsd:maxLength value="10"/>
+                    <xsd:pattern value="^[A-Z]{5}[0-9]{4}[A-Z]{1}$"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+                                                                                                                                                                <xsd:element ibmDfdlExtn:sampleValue="narenderkadari2@gmail.com" name="EmailID">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:pattern value="^[a-zA-Z0-9._%+-]+@gmail\.com$"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+                            <xsd:element ibmDfdlExtn:sampleValue="40000" name="SAL" type="xsd:string"/>
+                        </xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>				
+                			            </xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+
+</xsd:schema>

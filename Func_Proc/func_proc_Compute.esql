@@ -1,0 +1,46 @@
+
+PATH PROC; -- path is used to point to the schema of another esql file which is in same application or directly you can give schema file name to where u are accessing as schema_name.value;
+
+CREATE COMPUTE MODULE func_proc_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE AREA,dec DECIMAL;
+		
+		DECLARE r INTEGER InputRoot.XMLNSC.Radius.rad;
+		set Environment.Data = InputRoot.XMLNSC.Radius; -- enviroment can be used in another esql files also but cannot be used in seperate message flows in the same application even though deployed in same integration server along with the app.
+		
+		DECLARE arr row;
+		
+		DECLARE query CHARACTER 'SELECT R FROM test.employee';
+		
+		set arr.Data[]=PASSTHRU(query);
+		
+		CREATE FIELD OutputRoot.XMLNSC.data;
+		DECLARE outref REFERENCE TO OutputRoot.XMLNSC.data;
+		
+		
+	    call PROC.area(r,outref);
+	    
+	    set outref.new=arr;
+		
+	/*	SET AREA = area(r,dec);
+		
+		SET OutputRoot.XMLNSC.Area = 'Area of circele is'|| cast(AREA as CHARACTER);
+		
+		RETURN TRUE;
+	END;
+	 CREATE FUNCTION  area(IN r INTEGER --, out dec DECIMAL ) RETURNS DECIMAL  -- Functions are used to calculate some value and reyturn a value. It will execute everytime when it is iterated and mandatorily returns a value
+	BEGIN
+		--set dec = 3.14*r*r;
+		RETURN dec;
+	END;*/
+	
+	 -- Returns keyword will return a data type but return keyword word will give the data type value.
+	 
+	 -- Row type date cannot be passed as INPUT parameter in procedure.
+     
+	
+	RETURN TRUE;
+	
+	END;
+END MODULE;

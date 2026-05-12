@@ -1,0 +1,12 @@
+
+
+CREATE COMPUTE MODULE msg_set_mf_Compute2
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		
+		SET OutputRoot = InputRoot;
+		RETURN TRUE;
+	
+	END;
+END MODULE;

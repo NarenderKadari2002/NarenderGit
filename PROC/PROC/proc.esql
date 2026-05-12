@@ -1,0 +1,7 @@
+BROKER SCHEMA PROC
+
+
+CREATE PROCEDURE area (IN r INTEGER, IN outref REFERENCE )
+BEGIN
+		CREATE LASTCHILD OF outref.Data value 'Success';
+END;

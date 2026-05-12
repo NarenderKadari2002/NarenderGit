@@ -1,0 +1,14 @@
+
+
+CREATE COMPUTE MODULE var_2_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+        set Environment.var=Name;
+		IF Environment.var is not null  THEN
+			SET OutputRoot.XMLNSC.Result = 'Normal variable declared in schema level of one msg flow is in scope  with in the seperate msg flow with same schema name';
+		ELSE
+			SET OutputRoot.XMLNSC.Result ='Normal Variable is out of scope';
+		END IF;
+		RETURN TRUE;
+	END;
+END MODULE;

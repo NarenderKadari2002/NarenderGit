@@ -1,0 +1,18 @@
+
+
+CREATE COMPUTE MODULE var_sub_Compute1
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		--set Environment.var=share;
+		IF Environment.var is not null  THEN
+			--SET OutputRoot.XMLNSC.Result = 'Normal variable declared in schema level is with in the subflow scope';
+			
+			SET OutputRoot.XMLNSC.Result = 'shared variable declared in schema level is with in the subflow scope';
+		ELSE
+			SET OutputRoot.XMLNSC.Result ='shared Variable is out of scope';
+		END IF;
+		
+		
+	END;
+END MODULE;

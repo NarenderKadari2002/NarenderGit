@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Broker deployBarfile="message_setproject.generated.bar" deployTimestamp="2025-08-04 19:13:37">
+  <CompiledApplication>
+    <ConfigurableProperty uri="startMode">
+    </ConfigurableProperty>
+  </CompiledApplication>
+  <CompiledMessageFlow name="msg_set_mf" deployBarfile="message_setproject.generated.bar" deployTimestamp="2025-08-04 19:13:37">
+    <ConfigurableProperty uri="msg_set_mf#Compute1.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#Compute1.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#Compute1.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#Compute2.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#Compute2.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#Compute2.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#HTTP Input.URLSpecifier" override="/message_set">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#HTTP Input.decompressInputMessage">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#HTTP Input.faultFormat">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#HTTP Input.securityProfileName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#HTTP Input.timeoutForClient" override="2">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#HTTP Input.useHTTPS">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#HTTP Input.validateMaster" override="contentAndValue">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#HTTP Reply.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#HTTP Reply1.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#additionalInstances">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#commitCount">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#commitInterval">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#consumerPolicySet">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#consumerPolicySetBindings">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#coordinatedTransaction">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#maximumRateMsgsPerSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#monitoringProfile">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#notificationThresholdMsgsPerSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#processingTimeoutAction">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#processingTimeoutSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#providerPolicySet">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#providerPolicySetBindings">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#securityProfileName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#startInstancesWhenFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#startMode">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="msg_set_mf#wlmPolicy">
+    </ConfigurableProperty>
+  </CompiledMessageFlow>
+</Broker>
