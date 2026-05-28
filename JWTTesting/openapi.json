@@ -1,0 +1,35 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "JWTTesting",
+    "version": "1.0.0",
+    "description": "JWTTesting"
+  },
+  "servers": [
+    {
+      "url": "/jwttesting/v1"
+    }
+  ],
+  "paths": {
+    "/generateToken": {
+      "summary": "This operation is used to generate JWT Token",
+      "post": {
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/validateToken": {
+      "summary": "This operation is used to validate the JWT Token which is generated using generateToken",
+      "post": {
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    }
+  }
+}
