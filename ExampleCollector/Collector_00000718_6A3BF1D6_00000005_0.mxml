@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?><MessageAssembly iib:parser="GENERICROOT" xmlns:iib="http://com.ibm.iib/lt/1.0">
+   <version xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="INTEGER">1</version>
+   <checkpoint>
+      <messageId xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">00000718-6A3BF1D6-00000005</messageId>
+      <propagationCount xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="INTEGER">0</propagationCount>
+      <nodeCallDepth xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="INTEGER">1</nodeCallDepth>
+      <timestamp xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="TIMESTAMP">2026-06-24 15:03:50.397999</timestamp>
+      <source>
+         <name xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">Collector</name>
+         <identifier xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">Collector#FCMComposite_1_1</identifier>
+         <type xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">ComIbmCollectorNode</type>
+         <terminal xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">out</terminal>
+         <nodePath>
+            <application xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">ExampleCollector</application>
+            <messageFlow xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">Collector</messageFlow>
+            <node xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">Collector</node>
+         </nodePath>
+         <inputNode xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="BOOLEAN">TRUE</inputNode>
+      </source>
+      <target>
+         <name xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">TraceCollector_Out.txt</name>
+         <identifier xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">Collector#FCMComposite_1_6</identifier>
+         <type xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">ComIbmTraceNode</type>
+         <terminal xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">in</terminal>
+         <nodePath>
+            <application xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">ExampleCollector</application>
+            <messageFlow xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">Collector</messageFlow>
+            <node xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">TraceCollector_Out.txt</node>
+         </nodePath>
+      </target>
+   </checkpoint>
+   <environment/>
+   <localEnvironment xmlns:iib="http://com.ibm.iib/lt/1.0" iib:parser="MQROOT">
+      <Wildcard>
+         <WildcardMatch iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+      </Wildcard>
+   </localEnvironment>
+   <exceptionList/>
+   <message xmlns:iib="http://com.ibm.iib/lt/1.0" iib:parser="GENERICROOT">
+      <Properties iib:parser="GENERICPROPERTYPARSER">
+         <MessageSet iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+         <MessageType iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+         <MessageFormat iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+         <Encoding iib:valueType="INTEGER">546</Encoding>
+         <CodedCharSetId iib:valueType="INTEGER">437</CodedCharSetId>
+         <Transactional iib:valueType="BOOLEAN">FALSE</Transactional>
+         <Persistence iib:valueType="BOOLEAN">FALSE</Persistence>
+         <CreationTime iib:valueType="GMTTIMESTAMP">2026-06-24 15:03:50.398998</CreationTime>
+         <ExpirationTime iib:valueType="INTEGER">-1</ExpirationTime>
+         <Priority iib:valueType="INTEGER">0</Priority>
+         <ReplyIdentifier iib:valueType="BLOB"/>
+         <ReplyProtocol iib:valueType="CHARACTER">UNKNOWN</ReplyProtocol>
+         <Topic iib:elementType="0x03000000"/>
+         <ContentType iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+         <IdentitySourceType iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+         <IdentitySourceToken iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+         <IdentitySourcePassword iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+         <IdentitySourceIssuedBy iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+         <IdentityMappedType iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+         <IdentityMappedToken iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+         <IdentityMappedPassword iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+         <IdentityMappedIssuedBy iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+      </Properties>
+      <Collection iib:parser="COLLECTION">
+         <CollectionName iib:valueType="CHARACTER">ExampleCollector</CollectionName>
+         <In1 iib:parser="WSRoot">
+            <Properties iib:parser="WSPROPERTYPARSER">
+               <MessageSet iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+               <MessageType iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+               <MessageFormat iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+               <Encoding iib:valueType="INTEGER">546</Encoding>
+               <CodedCharSetId iib:valueType="INTEGER">1208</CodedCharSetId>
+               <Transactional iib:elementType="0x03000000"/>
+               <Persistence iib:elementType="0x03000000"/>
+               <CreationTime iib:elementType="0x03000000"/>
+               <ExpirationTime iib:valueType="INTEGER">-1</ExpirationTime>
+               <Priority iib:elementType="0x03000000"/>
+               <ReplyIdentifier iib:elementType="0x03000000"/>
+               <ReplyProtocol iib:valueType="CHARACTER">UNKNOWN</ReplyProtocol>
+               <Topic iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+               <ContentType iib:valueType="CHARACTER">text/plain; charset=utf-8</ContentType>
+               <IdentitySourceType iib:elementType="0x03000000"/>
+               <IdentitySourceToken iib:elementType="0x03000000"/>
+               <IdentitySourcePassword iib:elementType="0x03000000"/>
+               <IdentitySourceIssuedBy iib:elementType="0x03000000"/>
+               <IdentityMappedType iib:elementType="0x03000000"/>
+               <IdentityMappedToken iib:elementType="0x03000000"/>
+               <IdentityMappedPassword iib:elementType="0x03000000"/>
+               <IdentityMappedIssuedBy iib:elementType="0x03000000"/>
+            </Properties>
+            <HTTPInputHeader iib:parser="WSINPHDR">
+               <Content-Type iib:valueType="CHARACTER">text/plain; charset=utf-8</Content-Type>
+               <User-Agent iib:valueType="CHARACTER">Java/1.8.0_301</User-Agent>
+               <Host iib:valueType="CHARACTER">localhost:7800</Host>
+               <Accept iib:valueType="CHARACTER">text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2</Accept>
+               <Connection iib:valueType="CHARACTER">keep-alive</Connection>
+               <Content-Length iib:valueType="CHARACTER">20</Content-Length>
+               <X-Original-HTTP-Command iib:valueType="CHARACTER">POST http://localhost:7800/Input1 HTTP/1.1</X-Original-HTTP-Command>
+               <X-Server-Name iib:valueType="CHARACTER">localhost</X-Server-Name>
+               <X-Server-Port iib:valueType="CHARACTER">7800</X-Server-Port>
+               <X-Remote-Addr iib:valueType="CHARACTER">127.0.0.1</X-Remote-Addr>
+               <X-Remote-Host iib:valueType="CHARACTER">localhost</X-Remote-Host>
+               <X-Scheme iib:valueType="CHARACTER">http</X-Scheme>
+            </HTTPInputHeader>
+            <JSON iib:parser="json">
+               <Data>
+                  <Message1 iib:valueType="CHARACTER">Hello</Message1>
+               </Data>
+            </JSON>
+         </In1>
+         <In2 iib:parser="WSRoot">
+            <Properties iib:parser="WSPROPERTYPARSER">
+               <MessageSet iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+               <MessageType iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+               <MessageFormat iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+               <Encoding iib:valueType="INTEGER">546</Encoding>
+               <CodedCharSetId iib:valueType="INTEGER">1208</CodedCharSetId>
+               <Transactional iib:elementType="0x03000000"/>
+               <Persistence iib:elementType="0x03000000"/>
+               <CreationTime iib:elementType="0x03000000"/>
+               <ExpirationTime iib:valueType="INTEGER">-1</ExpirationTime>
+               <Priority iib:elementType="0x03000000"/>
+               <ReplyIdentifier iib:elementType="0x03000000"/>
+               <ReplyProtocol iib:valueType="CHARACTER">UNKNOWN</ReplyProtocol>
+               <Topic iib:elementType="0x03000000" iib:valueType="CHARACTER"/>
+               <ContentType iib:valueType="CHARACTER">text/plain; charset=utf-8</ContentType>
+               <IdentitySourceType iib:elementType="0x03000000"/>
+               <IdentitySourceToken iib:elementType="0x03000000"/>
+               <IdentitySourcePassword iib:elementType="0x03000000"/>
+               <IdentitySourceIssuedBy iib:elementType="0x03000000"/>
+               <IdentityMappedType iib:elementType="0x03000000"/>
+               <IdentityMappedToken iib:elementType="0x03000000"/>
+               <IdentityMappedPassword iib:elementType="0x03000000"/>
+               <IdentityMappedIssuedBy iib:elementType="0x03000000"/>
+            </Properties>
+            <HTTPInputHeader iib:parser="WSINPHDR">
+               <Content-Type iib:valueType="CHARACTER">text/plain; charset=utf-8</Content-Type>
+               <User-Agent iib:valueType="CHARACTER">Java/1.8.0_301</User-Agent>
+               <Host iib:valueType="CHARACTER">localhost:7800</Host>
+               <Accept iib:valueType="CHARACTER">text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2</Accept>
+               <Connection iib:valueType="CHARACTER">keep-alive</Connection>
+               <Content-Length iib:valueType="CHARACTER">20</Content-Length>
+               <X-Original-HTTP-Command iib:valueType="CHARACTER">POST http://localhost:7800/Input2 HTTP/1.1</X-Original-HTTP-Command>
+               <X-Server-Name iib:valueType="CHARACTER">localhost</X-Server-Name>
+               <X-Server-Port iib:valueType="CHARACTER">7800</X-Server-Port>
+               <X-Remote-Addr iib:valueType="CHARACTER">127.0.0.1</X-Remote-Addr>
+               <X-Remote-Host iib:valueType="CHARACTER">localhost</X-Remote-Host>
+               <X-Scheme iib:valueType="CHARACTER">http</X-Scheme>
+            </HTTPInputHeader>
+            <JSON iib:parser="json">
+               <Data>
+                  <Message2 iib:valueType="CHARACTER">World</Message2>
+               </Data>
+            </JSON>
+         </In2>
+      </Collection>
+   </message>
+</MessageAssembly>
