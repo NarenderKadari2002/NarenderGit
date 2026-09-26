@@ -1,0 +1,51 @@
+PATH DBloggingSharedLib;
+CREATE COMPUTE MODULE postAdvancePayment_Framing_ResTo_T24
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		CALL Framing_Res();
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE Framing_Res() BEGIN
+		DECLARE inref REFERENCE TO InputRoot.XMLNSC.*:Envelope.*:Body.*:SBGenericTransferandPaymentsResponse.*:FUNDSTRANSFERType;
+		DECLARE indata REFERENCE TO InputRoot.SOAP.Body;
+		DECLARE ccsidref REFERENCE TO Environment.CCSID;
+		DECLARE encoderef REFERENCE TO Environment.Encoding;
+		DECLARE headerref REFERENCE TO InputRoot.HTTPResponseHeader;
+		SET Environment.ESB_Process_Resonse = CAST(ASBITSTREAM(indata) AS CHARACTER CCSID ccsidref ENCODING encoderef);
+		
+		CREATE FIELD OutputRoot.JSON.Data;
+		SET OutputRoot.JSON.Data.statuscode = headerref."X-Original-HTTP-Status-Code";
+		SET OutputRoot.JSON.Data.message='Operation performed successfully';
+		
+		CREATE LASTCHILD OF OutputRoot.JSON.Data NAME'data';
+		DECLARE outref REFERENCE TO OutputRoot.JSON.Data.data;
+		SET outref.transactionId = InputRoot.XMLNSC.*:Envelope.*:Body.*:SBGenericTransferandPaymentsResponse.*:Status.*:transactionId;
+		SET outref.clientTransactionId = inref.*:SBUETRID;
+		SET outref.transactionType= inref.*:TRANSACTIONTYPE;
+		SET outref.account = inref.*:DEBITACCTNO;
+		SET outref.creditCardAccount = inref.*:CREDITACCTNO;
+		SET outref.valueDate = inref.*:gDATETIME.*:DATETIME;
+		SET outref.processedAt = CURRENT_DATE;
+		SET outref.amount = inref.*:CREDITAMOUNT;
+		SET outref.currency = inref.*:CREDITCURRENCY;
+		SET outref.channel =inref.*:LSOURCETYPE;
+		
+		DECLARE outdata REFERENCE TO OutputRoot.JSON.Data;
+		SET Environment.AppServer_Process_Response = CAST(ASBITSTREAM(outdata) AS CHARACTER CCSID ccsidref ENCODING encoderef);
+		SET OutputRoot.HTTPResponseHeader.id = Environment.id;
+		SET OutputRoot.HTTPResponseHeader.Dbloggingflag=Environment.Variables.Values.Dbloggingflag;
+		SET OutputRoot.HTTPResponseHeader.Consolelogflag=Environment.Variables.Values.Consolelogflag;
+		
+		IF Environment.Variables.Values.Dbloggingflag = 'Y' THEN
+			CALL insertAuditLog(Environment.id,CURRENT_TIMESTAMP,Environment.ESB_Process_Resonse,'HOST_Res',ApplicationLabel);
+			CALL insertAuditLog(Environment.id,CURRENT_TIMESTAMP,Environment.AppServer_Process_Response,'AppServer_Res',ApplicationLabel);
+		END IF;
+		IF Environment.Variables.Values.Consolelogflag = 'Y' THEN
+			LOG EVENT VALUES('HOST_Res: ', Environment.ESB_Process_Resonse, ApplicationLabel, MessageFlowLabel, Environment.id, CURRENT_TIMESTAMP);
+			LOG EVENT VALUES('AppServer_Res: ', Environment.AppServer_Process_Response, ApplicationLabel, MessageFlowLabel, Environment.id, CURRENT_TIMESTAMP);
+		END IF;
+		
+		
+	END;
+	END MODULE;

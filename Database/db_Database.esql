@@ -1,0 +1,16 @@
+
+
+CREATE DATABASE MODULE db_Database
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		DECLARE schemaname CHARACTER 'test';
+		
+		INSERT INTO Database.{schemaname}.employee VALUES (3,'emp2',55455,39 );-- when we are using hardcoded schema name we use database function
+		
+		
+		
+		RETURN TRUE;
+	END;
+
+END MODULE;

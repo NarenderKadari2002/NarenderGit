@@ -1,0 +1,20 @@
+
+
+CREATE COMPUTE MODULE getemp_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		DECLARE inref REFERENCE TO InputRoot.XMLNSC.Employee.[>];
+		
+		DECLARE data row;
+		
+		DECLARE query CHARACTER 'select * from test.employee AS R where R.ID=' || inref.id;
+		
+		SET data.result[]= PASSTHRU(query);
+		
+		set OutputRoot.XMLNSC.Data.Result[] = data.result[];
+		
+		RETURN TRUE;
+		
+		END;
+END MODULE;

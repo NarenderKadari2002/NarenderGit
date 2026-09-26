@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:recSepFieldsFmt="http://www.ibm.com/dfdl/RecordSeparatedFieldFormat">
+    <xsd:import namespace="http://www.ibm.com/dfdl/RecordSeparatedFieldFormat" schemaLocation="IBMdefined/RecordSeparatedFieldFormat.xsd"/>
+    <xsd:annotation>
+		<xsd:appinfo source="http://www.ogf.org/dfdl/">
+			<dfdl:format encoding="{$dfdl:encoding}" escapeSchemeRef="" occursCountKind="implicit" ref="recSepFieldsFmt:RecordSeparatedFieldsFormat"/>
+		</xsd:appinfo>
+	</xsd:annotation>
+
+	<xsd:element ibmSchExtn:docRoot="true" name="Record_Oriented">
+		<xsd:complexType>
+			<xsd:sequence dfdl:separator="%CR;%LF;%WSP*;" dfdl:separatorSuppressionPolicy="anyEmpty">
+				<xsd:element dfdl:initiator="Employee(" maxOccurs="unbounded" name="Employee">
+					<xsd:complexType>
+						<xsd:sequence dfdl:initiatedContent="yes" dfdl:separator="%#124;" dfdl:separatorSuppressionPolicy="anyEmpty">
+							<xsd:element dfdl:initiator="EmpId=" ibmDfdlExtn:sampleValue="1111" name="EmpId" type="xsd:string"/>
+							<xsd:element dfdl:initiator="PhNo=" ibmDfdlExtn:sampleValue="+919346642978" name="PhNo">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:pattern value="\+91\d{10}"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+							<xsd:element dfdl:initiator="PAN=" ibmDfdlExtn:sampleValue="COIPN1002F" name="PAN">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:pattern value="^[A-Z]{5}[0-9]{4}[A-Z]{1}$"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+                            						<xsd:element dfdl:initiator="Gmail=" ibmDfdlExtn:sampleValue="narenderkadari2@gmail.com" name="Gmail">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:pattern value="^[a-zA-Z0-9._%+-]+@gmail\.com$"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+                            <xsd:element dfdl:initiator="Sal=" dfdl:terminator=")" ibmDfdlExtn:sampleValue="40000" name="Sal" type="xsd:string"/>
+                        </xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+</xsd:schema>

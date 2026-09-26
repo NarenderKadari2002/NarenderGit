@@ -1,0 +1,17 @@
+BROKER SCHEMA Var_Schema
+
+
+CREATE COMPUTE MODULE Dif_schema_var_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+	    set Environment.var=Name;
+	    
+	    
+	    declare v CHARACTER;
+		IF Environment.var is not null  THEN
+			SET OutputRoot.XMLNSC.Result = 'Normal variable declared in schema level is with in the subflow scope';
+		ELSE
+			SET OutputRoot.XMLNSC.Result ='Normal Variable is out of scope';
+		END IF;
+	END;
+END MODULE;

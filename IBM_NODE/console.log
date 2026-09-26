@@ -1,0 +1,10 @@
+2025-08-01 06:18:50.653936: BIP1990I: Integration server 'IBM_NODE' starting initialization; version '12.0.3.0' (64-bit) 
+2025-08-01 06:18:50.711948: BIP9905I: Initializing resource managers. 
+Listening for transport dt_socket at address: 9997
+2025-08-01 06:19:07.747299: BIP9906I: Reading deployed resources. 
+2025-08-01 06:19:09.455264: BIP2866I: IBM App Connect Enterprise administration security is inactive. 
+2025-08-01 06:19:09.474668: BIP3132I: The HTTP Listener has started listening on port '7600' for 'RestAdmin http' connections. 
+2025-08-01 06:19:09.475945: BIP1991I: Integration server has finished initialization. 
+2025-08-01 06:23:15.262620: BIP2152I: Configuration message received. 
+2025-08-01 06:23:15.262820: BIP2153I: About to 'deleteAll' an integration server. 
+2025-08-01 06:23:15.274025: BIP2154I: Integration server finished with Configuration message. 

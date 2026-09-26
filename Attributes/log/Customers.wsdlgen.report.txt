@@ -1,0 +1,67 @@
+Summary of selections: WSDL files generation
+
+The selected message set:
+/Customers/Customers
+
+The generated WSDL files will go into:
+/Customers/Customers
+
+The version of WSDL to be generated: 1.1
+The version of SOAP to be generated: 1.1
+
+The selected style for WSDL generation: document
+The WSDL Namespace: http://tempuri.org/Customers
+
+The following operations will be created:
+AddCustomer (Request-Response)
+GetCustomer (Request-Response)
+
+The following bindings are selected:
+SOAP over http.
+
+The following WSDL files will be generated:
+/Customers/Customers/CustomersService.wsdl
+
+
+Generating XML Schema files from Message Definition files
+Generating schema for no XML Wire format
+Generating schema using the strict option
+All complex types and groups with a Content validation of "Open" or "Open defined" will be generated as if they had Content validation "Closed"
+All complex types and groups with a Composition of "Ordered set" or "Unordered set" will be generated with a Composition of "Sequence"
+All complex types and groups with a Composition of "Message" will be generated with a Composition of "Choice"
+
+
+Processing File : "/Customers/Customers/CustomerDetails.mxsd"
+
+Saving File : "/Customers/Customers/org/tempuri/customers/CustomerDetails.xsd" 
+
+Generating XML Schema file \Customers\Customers\CustomerDetails.mxsd from Message Definition file \Customers\Customers\org\tempuri\customers\CustomerDetails.xsd
+Creating new WSDL Service file '\Customers\Customers\org\tempuri\customers\CustomersService.wsdl'
+Setting wsdl definition name for 'CustomersService.wsdl': Customers
+Setting wsdl definition targetNamespace for 'CustomersService.wsdl': http://tempuri.org/Customers
+Adding namespace: xmlns for 'CustomersService.wsdl':soap=http://schemas.xmlsoap.org/wsdl/soap/
+Adding namespace: xmlns for 'CustomersService.wsdl':xsd=http://www.w3.org/2001/XMLSchema
+Adding namespace: xmlns for 'CustomersService.wsdl':wsdl=http://schemas.xmlsoap.org/wsdl/
+Creating new WSDL Interface file '\Customers\Customers\org\tempuri\customers\CustomersService.wsdl'
+Creating portType for WSDL Interface: CustomersPortType
+Creating portType operation 'AddCustomer'
+Creating message 'AddCustomer_in'
+Creating message 'AddCustomer_out'
+Creating message 'AddCustomer_fault1'
+Creating portType operation 'GetCustomer'
+Creating message 'GetCustomer_in'
+Creating message 'GetCustomer_out'
+Creating message 'GetCustomer_fault1'
+Creating SOAP over HTTP binding 'CustomersSOAP_HTTP_Binding'
+Creating binding operation 'AddCustomer' for binding 'CustomersSOAP_HTTP_Binding'
+Creating binding operation 'GetCustomer' for binding 'CustomersSOAP_HTTP_Binding'
+Creating SOAP over HTTP service 'CustomerDetails_service'
+Creating port 'Customers_Port' for service 'CustomerDetails_service'
+
+Elapsed time processing this WSDL definition: 0.226 seconds
+Number of warnings for this WSDL definition: 0
+
+
+Number of files processed: 2
+
+

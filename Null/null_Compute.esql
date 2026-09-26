@@ -1,0 +1,21 @@
+
+
+CREATE COMPUTE MODULE null_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		DECLARE inref REFERENCE TO InputRoot.XMLNSC.Inventory.Item;
+		
+		--set inref.ItemID= null; -- If you want to delete a particular tag from the data you can assign the value null to it.
+		
+		--set inref.ItemID value =null; -- if you don't want to delete the tag and just vants to delete the data use value and asiisgn null to the tag that you want to make empty.
+		
+		DELETE FIELD inref.ItemID; -- another way of deleting a tag is using delete field function.
+		
+		--DELETE FIRSTCHILD OF inref;
+	--	DELETE LASTCHILD of inref;
+		
+		set OutputRoot.XMLN.NewInventory.ITEM= inref;
+		RETURN TRUE;
+	END;
+END MODULE;

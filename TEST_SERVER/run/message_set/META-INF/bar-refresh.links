@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy:Deploy xmlns:deploy="http://www.ibm.com/xmlns/prod/wmb/deploy/6.0.0" overrideConfigurableProperties="false" includeESQL="false">
+  <deployables>
+    <deployable deployed="true" barResourceTimeStamp="1754172600248" workspaceResource="/message_set/application.descriptor">
+      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file message_set\application.descriptor.&#xA;Successfully added file message_set\application.descriptor to BAR file.&#xA;Elapsed time: 0 second(s).&#xA;&#xA;Successfully added file message_set\application.descriptor to BAR file.&#xA;" severity="0"/>
+      <barEntry name="application.descriptor"/>
+    </deployable>
+    <deployable deployed="true" barResourceTimeStamp="1754177858385" workspaceResource="/message_set/msg_set_mf.msgflow">
+      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file message_set\msg_set_mf.msgflow.&#xA;Successfully added file message_set\msg_set_mf.msgflow to BAR file.&#xA;" severity="0"/>
+      <barEntry name="msg_set_mf.msgflow"/>
+    </deployable>
+    <deployable deployed="true" barResourceTimeStamp="1754175442172" workspaceResource="/message_set/msg_set_mf_Compute.esql">
+      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file message_set\msg_set_mf_Compute.esql.&#xA;Successfully added file message_set\msg_set_mf_Compute.esql to BAR file.&#xA;" severity="0"/>
+      <barEntry name="msg_set_mf_Compute.esql"/>
+    </deployable>
+    <deployable deployed="true" barResourceTimeStamp="1754175479879" workspaceResource="/message_set/msg_set_mf_Compute2.esql">
+      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file message_set\msg_set_mf_Compute2.esql.&#xA;Successfully added file message_set\msg_set_mf_Compute2.esql to BAR file.&#xA;" severity="0"/>
+      <barEntry name="msg_set_mf_Compute2.esql"/>
+    </deployable>
+    <deployable deployed="true" barResourceTimeStamp="1754174438429" workspaceResource="/elements/elements/messageSet.mset">
+      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="Generating .xsdzip file for message set &quot;elements&quot; &#xA;&#xD;&#xA;Generating schema for no XML Wire format&#xD;&#xA;Generating schema using the lax option&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;Processing File : &quot;/elements/elements/elements_file.mxsd&quot;&#xD;&#xA;&#xD;&#xA;Saving File : &quot;/elements/.GeneratedSchemas/elements_file.xsd&quot; &#xA;&#xD;&#xA;Saving file &quot;/elements/.KeywordsFile/meta-inf/keywords.txt&quot; &#xA;&#xD;&#xA;Saving file &quot;/elements/elements/messageSet.mset&quot; &#xA;&#xD;&#xA;&#xD;&#xA;Elapsed time: 0.013 seconds&#xD;&#xA;Warnings: 0&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;Operation complete&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" severity="0"/>
+      <barEntry name="elements.xsdzip"/>
+    </deployable>
+    <deployable workspaceResource="/elements/importFiles/Users/suman/OneDrive/Desktop/Root.xsd"/>
+  </deployables>
+</deploy:Deploy>

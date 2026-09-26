@@ -1,0 +1,73 @@
+PATH  DBloggingSharedLib;
+--DECLARE message_id SHARED CHARACTER ;
+--DECLARE Dbloggingflag SHARED CHARACTER;
+--DECLARE Consolelogflag SHARED CHARACTER;
+DECLARE soapenv NAMESPACE 'http://schemas.xmlsoap.org/soap/envelope/';
+DECLARE cms NAMESPACE 'http://temenos.com/CMS-SERVICES';
+DECLARE fun NAMESPACE 'http://temenos.com/FUNDSTRANSFERSBMPAYMENTAPI100';
+CREATE COMPUTE MODULE postAdvancePayment_Framing_ReqTo_T24
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		CALL Framing_Req();
+		RETURN TRUE;
+	END; 
+
+	
+
+	CREATE PROCEDURE Framing_Req() BEGIN
+		DECLARE inref REFERENCE TO InputRoot.JSON.Data;
+		DECLARE headerref REFERENCE TO InputRoot.HTTPInputHeader;
+		SET Environment.CCSID = InputProperties.CodedCharSetId;
+		SET Environment.Encoding = InputProperties.Encoding;
+		SET Environment.Variables.Values.Dbloggingflag=headerref.Dbloggingflag;
+		SET Environment.Variables.Values.Consolelogflag=headerref.Consolelogflag;
+		DECLARE ccsidref REFERENCE TO Environment.CCSID;
+		DECLARE encoderef REFERENCE TO Environment.Encoding;
+	--SET Consolelogflag=headerref.Consolelogflag;
+		--SET Dbloggingflag =headerref.Dbloggingflag;
+		SET Environment.id = headerref.Message_id;
+		SET Environment.AppServer_Process_Req = CAST(ASBITSTREAM(inref) AS CHARACTER CCSID ccsidref ENCODING encoderef);
+		--SET message_id = Environment.id;
+		
+		
+		
+		CREATE FIELD OutputRoot.XMLNSC.soapenv:Envelope.soapenv:Body.cms:SBGenericTransferandPayments;
+		SET OutputRoot.XMLNSC.*:Envelope.*:Header =null;
+		SET OutputRoot.XMLNSC.*:Envelope.(XMLNSC.NamespaceDecl)xmlns:soapenv = soapenv;
+		SET OutputRoot.XMLNSC.*:Envelope.(XMLNSC.NamespaceDecl)xmlns:cms = cms;
+		SET OutputRoot.XMLNSC.*:Envelope.(XMLNSC.NamespaceDecl)xmlns:fun = fun;
+		DECLARE outref REFERENCE TO OutputRoot.XMLNSC.soapenv:Envelope.soapenv:Body.cms:SBGenericTransferandPayments;
+		SET outref.*:WebRequestCommon.company=getproperty_value('{userDefined}:udp_policy','company');
+		SET outref.*:WebRequestCommon.password=getproperty_value('{userDefined}:udp_policy','password');
+		SET outref.*:WebRequestCommon.userName=getproperty_value('{userDefined}:udp_policy','userName');
+		SET outref.*:OfsFunction='';		
+		SET outref.*:FUNDSTRANSFERSBMPAYMENTAPI100Type.(XMLNSC.Attribute)id='12';
+		DECLARE fundref REFERENCE TO outref.*:FUNDSTRANSFERSBMPAYMENTAPI100Type;
+		SET fundref.fun:OPERATION=getproperty_value('{userDefined}:udp_policy','operation');
+		SET fundref.fun:CREDITAMOUNT=inref.amount;
+		SET fundref.fun:DEBITTHEIRREF=inref.transactionType;
+		SET fundref.fun:DEBITACCTNO=inref.account;
+		SET fundref.fun:gPAYMENTDETAILS.(XMLNSC.Attribute)g='1';
+		SET fundref.fun:gPAYMENTDETAILS.fun:PAYMENTDETAILS=inref.clientTransactionId;
+		SET fundref.fun:SBCHANNEL='1';
+		SET fundref.fun:NETTXNID='32434';
+		SET fundref.fun:REQUESTDATE=CURRENT_DATE;
+		SET fundref.fun:NETUSERNAME=inref.netUsername;
+		SET fundref.fun:LSOURCETYPE=inref.channel;
+		SET fundref.fun:LBUSINESSIND=inref.transactionType;
+		
+
+		DECLARE outdata REFERENCE TO OutputRoot.XMLNSC;
+		SET Environment.ESB_Process_Req = CAST(ASBITSTREAM(outdata) AS CHARACTER CCSID ccsidref ENCODING encoderef);
+		IF Environment.Variables.Values.Dbloggingflag = 'Y' THEN
+			CALL insertAuditLog(Environment.id,CURRENT_TIMESTAMP,Environment.AppServer_Process_Req,'AppServer_Req',ApplicationLabel);
+			CALL insertAuditLog(Environment.id,CURRENT_TIMESTAMP,Environment.ESB_Process_Req,'HOST_Req',ApplicationLabel);
+		END IF;
+		IF Environment.Variables.Values.Consolelogflag = 'Y' THEN
+			LOG EVENT VALUES('AppServer_Req: ', Environment.AppServer_Process_Req, ApplicationLabel, MessageFlowLabel, Environment.id, CURRENT_TIMESTAMP);
+			LOG EVENT VALUES('HOST_Req: ', Environment.ESB_Process_Req, ApplicationLabel, MessageFlowLabel, Environment.id, CURRENT_TIMESTAMP);
+		END IF;
+		
+	END;
+END MODULE;
+

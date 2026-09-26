@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Customers" targetNamespace="http://tempuri.org/Customers" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tempuri.org/Customers" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <binding hasEncoding="false" imported="true" name="CustomersSOAP_HTTP_Binding" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Customers" xmlns:mrm="http://tempuri.org/Customers">
+      <xsd:include schemaLocation="CustomerDetails_WSDLGenWrapper.mxsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="AddCustomer_in">
+    <wsdl:part element="tns:AddcustomerDetailsRequest" name="AddcustomerDetailsRequest"/>
+  </wsdl:message>
+  <wsdl:message name="AddCustomer_out">
+    <wsdl:part element="tns:AddCustomerDetailsResponse" name="AddCustomerDetailsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddCustomer_fault1">
+    <wsdl:part element="tns:Fault" name="Fault"/>
+  </wsdl:message>
+  <wsdl:message name="GetCustomer_in">
+    <wsdl:part element="tns:GetCustomerDetailsRequest" name="GetCustomerDetailsRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetCustomer_out">
+    <wsdl:part element="tns:GetCustomerDetailsresponse" name="GetCustomerDetailsresponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetCustomer_fault1">
+    <wsdl:part element="tns:Fault" name="Fault"/>
+  </wsdl:message>
+  <wsdl:portType name="CustomersPortType">
+    <wsdl:operation name="AddCustomer">
+      <wsdl:input message="tns:AddCustomer_in" name="AddCustomer_Input"/>
+      <wsdl:output message="tns:AddCustomer_out" name="AddCustomer_Output"/>
+      <wsdl:fault message="tns:AddCustomer_fault1" name="AddCustomer_Fault"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomer">
+      <wsdl:input message="tns:GetCustomer_in" name="GetCustomer_Input"/>
+      <wsdl:output message="tns:GetCustomer_out" name="GetCustomer_Output"/>
+      <wsdl:fault message="tns:GetCustomer_fault1" name="GetCustomer_Fault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CustomersSOAP_HTTP_Binding" type="tns:CustomersPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="AddCustomer">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AddCustomer_Input">
+        <soap:body parts="AddcustomerDetailsRequest" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AddCustomer_Output">
+        <soap:body parts="AddCustomerDetailsResponse" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AddCustomer_Fault">
+        <soap:fault name="AddCustomer_Fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomer">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetCustomer_Input">
+        <soap:body parts="GetCustomerDetailsRequest" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetCustomer_Output">
+        <soap:body parts="GetCustomerDetailsresponse" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="GetCustomer_Fault">
+        <soap:fault name="GetCustomer_Fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CustomerDetails_service">
+    <wsdl:port binding="tns:CustomersSOAP_HTTP_Binding" name="Customers_Port">
+      <soap:address location="http://localhost:7800/CustomerDetails_service"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,12 @@
+
+
+CREATE COMPUTE MODULE msg_set_mf_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		set OutputRoot.XMLNSC.Exception=InputExceptionList;
+		RETURN TRUE;
+	END;
+
+	
+END MODULE;

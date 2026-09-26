@@ -1,0 +1,41 @@
+
+
+CREATE COMPUTE MODULE generateToken
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE inref REFERENCE TO InputRoot.JSON.Data;
+		SET OutputRoot.JSON.Data.jwtToken = generateToken(inref.username,inref.role);
+		Return TRUE;
+	END;
+	
+END MODULE;
+
+	CREATE PROCEDURE generateToken (IN username CHARACTER, IN role CHARACTER) RETURNS CHARACTER
+	LANGUAGE JAVA
+	EXTERNAL NAME "JwtGenerator.generateToken";
+---------------------------------------------------------------------------------------------------------------------------------
+CREATE COMPUTE MODULE validateToken
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE jwtToken CHARACTER;
+		SET jwtToken = SUBSTRING(InputRoot.HTTPInputHeader.Authorization AFTER 'Bearer ');
+		
+		SET OutputRoot.JSON.Data.Result = validate(jwtToken);
+		
+		Return TRUE;
+	END;
+END MODULE;
+
+CREATE PROCEDURE validate (IN jwtToken CHARACTER) RETURNS CHARACTER
+	LANGUAGE JAVA
+	EXTERNAL NAME "JwtGenerator.validateToken";
+-----------------------------------------------------------------------------------------------------------------------------
+
+CREATE COMPUTE MODULE Exception_handler
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		SET OutputRoot = InputExceptionList;
+		Return TRUE;
+	END;
+END MODULE;

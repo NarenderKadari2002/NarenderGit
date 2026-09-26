@@ -1,0 +1,38 @@
+
+
+CREATE COMPUTE MODULE addEmp_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		/*
+		<Employee>
+    <addemp>
+        <id>101</id>
+        <name>John Doe</name>
+        <sal>55000</sal>
+        <age>30</age>
+    </addemp>
+</Employee>
+		*/
+		
+		DECLARE inref REFERENCE TO InputRoot.XMLNSC.Employee;
+		
+		IF (EXISTS(inref.addemp[])=TRUE)  THEN
+			
+			Set Environment.Data = inref;	-- the scope of environment is through out the application it can be used in subflows too once declared.	
+			set OutputRoot= InputRoot;
+			
+			PROPAGATE TO TERMINAL 1;
+			
+			RETURN FALSE;
+		ELSEIF (EXISTS(inref.getemp[])=TRUE)  THEN
+			set OutputRoot= InputRoot;
+			
+			PROPAGATE TO TERMINAL 2;		
+			RETURN FALSE;	
+		END IF;
+		
+		
+		RETURN TRUE;
+	END;
+END MODULE;

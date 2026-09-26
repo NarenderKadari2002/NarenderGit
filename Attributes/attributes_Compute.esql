@@ -1,0 +1,71 @@
+
+
+CREATE COMPUTE MODULE attributes_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+/*   <Library>
+    <Book id="B1" genre="Fiction">
+        <Title>The Silent River</Title>
+        <Author>Ravi Kumar</Author>
+    </Book>
+    <Book id="B2" genre="Science">
+        <Title>Stars and Beyond</Title>
+        <Author>Anita Sharma</Author>
+    </Book>
+</Library>    */
+
+DECLARE inref REFERENCE TO InputRoot.XMLNSC.Library;
+
+
+CREATE FIELD OutputRoot.XMLNSC.Library;
+
+DECLARE outref REFERENCE TO OutputRoot.XMLNSC.Library;
+
+--CREATE LASTCHILD OF outref.Book Name 'id' value inref.Book.id;
+
+--CREATE LASTCHILD OF outref.Book Name 'id' value FIELDVALUE(inref.Book.id);
+
+--CREATE LASTCHILD OF outref.Book Name 'id' value inref.Book.(XMLNSC.Attribute)id;
+
+
+/*	set outref.Book[1].Title=inref.Book[1].Title; -- one can access the xml attribute value by using FIELDVALUE function or .(XMLNSC.Attribute) name or directly giving reference to attribute value.
+	set outref.Book[1].Author=inref.Book[1].Author;
+	CREATE FIRSTCHILD of outref.Book[1] NAME 'id' VALUE inref.Book[1].(XMLNSC.Attribute)id;
+	CREATE LASTCHILD of outref.Book[1] NAME 'genre' VALUE inref.Book[1].(XMLNSC.Attribute)genre;
+	
+	set outref.Book[2].Title=inref.Book[2].Title;
+	set outref.Book[2].Author=inref.Book[2].Author;
+	CREATE FIRSTCHILD of outref.Book[2] NAME 'id' VALUE inref.Book[2].(XMLNSC.Attribute)id;
+	CREATE LASTCHILD of outref.Book[2] NAME 'genre' VALUE inref.Book[2].(XMLNSC.Attribute)genre; */
+
+/*    <Library>
+    <Book>
+        <Title>The Silent River</Title>
+        <Author>Ravi Kumar</Author>
+        <id>B1</id>
+        <genre>Fiction</genre>
+    </Book>
+    <Book>
+        <Title>Stars and Beyond</Title>
+        <Author>Anita Sharma</Author>
+        <id>B2</id>
+        <genre>Science</genre>
+    </Book>
+</Library>
+
+*/
+
+set outref.Book[1].(XMLNSC.Attribute)id= inref.Book[1].id; -- one can create an XML attribute using .(XMLNSC.Attribute)Name at outputroot side.
+set outref.Book[1].(XMLNSC.Attribute)genre= inref.Book[1].genre;
+set outref.Book[1].Title= inref.Book[1].Title;
+set outref.Book[1].Author= inref.Book[1].Author;
+
+set outref.Book[2].(XMLNSC.Attribute)id= inref.Book[2].id;
+set outref.Book[2].(XMLNSC.Attribute)genre= inref.Book[2].genre;
+set outref.Book[2].Title= inref.Book[2].Title;
+set outref.Book[2].Author= inref.Book[2].Author;
+
+
+		RETURN TRUE;
+	END;
+END MODULE;

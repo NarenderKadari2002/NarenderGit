@@ -1,0 +1,33 @@
+BROKER SCHEMA Exception_Handler
+
+
+CREATE COMPUTE MODULE Error_handler_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		Declare exref REFERENCE TO InputExceptionList.*[<];
+		DECLARE i,j INT ;
+		DECLARE errorref CHARACTER 'Error_Desc:';
+		-- Iterate through all exception nodes
+		WHILE LASTMOVE(exref) DO
+			IF EXISTS(exref.Text[]) Then
+    -- Append the Text field if present
+   			SET errorref = errorref || ' ' || exref.Text;
+   			 -- Check if Insert children exist
+   			 IF EXISTS(exref.Insert[]) THEN
+   			 	SET i=1;
+     		    SET j = CARDINALITY(exref.Insert[]);
+     		    WHILE i <= j DO
+                		SET errorref = errorref || ' ' || exref.Insert[i].Text;
+            			SET i = i + 1;
+   			 	END WHILE; 
+   			 END IF;
+   			 END IF;
+   			 MOVE exref LASTCHILD;
+		END WHILE;
+		
+		SET OutputRoot.XMLNSC.Execption_Details=errorref;
+		
+		
+	END;
+END MODULE;

@@ -1,0 +1,24 @@
+
+
+CREATE COMPUTE MODULE Cast_Concat_Coallesce_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		DECLARE inref REFERENCE TO InputRoot.XMLNSC.Inventory;
+		
+		DECLARE str CHARACTER;
+		
+		
+		DECLARE num INTEGER;
+		
+		--set num = cast(inref.id[1] AS INTEGER)+cast(inref.id[2] AS INTEGER); -- cast function is used to convert the datatype of a value.
+		
+		set str = inref.id[1]||','||inref.id[2]||','|| COALESCE(inref.id[1],inref.id[2],inref.id[3]); -- || concat is used to combine two strings. If we concatinate anything with null we will get null again.
+		
+		--set str = COALESCE(inref.id[1],inref.id[2],inref.id[3]); -- coalesce function always returns first not null value and always returns string value.
+		
+		set OutputRoot.XMLNSC.Data.Number = str;
+		
+		RETURN TRUE;
+	END;
+END MODULE;

@@ -1,0 +1,44 @@
+Declare Name EXTERNAL CHARACTER ' '; -- External variable is with in the scope of sub flow with same schema name but out of the scope for another msg flow even with the same schema name.
+--Declare share shared CHARACTER 'SHARED Variable';-- Shared variable declared in schema level is with in the subflow/message flow scope but the sublow/message flow must be in same schema and out of the scope for sublows/msg flows with differrent schema name.
+--Declare normal CHARACTER 'Normal Variable'; --Normal variable declared in schema level is with in the subflow/message flow scope but the sublow/message flow must be in same schema and out of the scope for sublows/msg flows with differrent schema name.
+CREATE COMPUTE MODULE Var_Compute
+	--Declare share shared CHARACTER 'SHARED Variable'; -- shared variables can be declared only in module and schema level and data will be stored in cache memory untill or unless node or eg restarted on application restarted.
+	--Declare normal CHARACTER 'Normal Variable';--Normal variable declared in module level does not have access in sub flow of another message flow it is purely to the scope of node level.
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		DECLARE inref REFERENCE TO InputRoot.XMLNSC;
+		
+		--Declare normal CHARACTER 'Normal Variable'; -- Normal variable declared in function level does not have access insub flow of another message flow it is purely to the scope of node level.
+		
+		
+	/*	
+		IF EXISTS(inref.Name[])=True THEN
+			
+			--Set Environment.Data =share;
+			
+		SET OutputRoot.XMLNSC.Name = share;
+		
+		RETURN TRUE;
+		
+		PROPAGATE TO TERMINAL 0;
+			
+		ELSEIF EXISTS(inref.Dept[])=True THEN
+			--Set Environment.Data =share;
+			SET OutputRoot.XMLNSC.Name = share;
+			
+			PROPAGATE TO TERMINAL 1;
+			
+		ELSEIF EXISTS(inref.Section[])=True THEN
+			--Set Environment.Data =share; -- enviroment cannot be used in another msg flow with the same schema name or diff but can be used in subflows with same schema and diff schema name.
+			SET OutputRoot.XMLNSC.Name = share;
+			
+			
+			--PROPAGATE TO TERMINAL 2;
+		END IF;
+		
+		*/
+		PROPAGATE TO TERMINAL 2;
+		RETURN FALSE;
+	END;
+END MODULE;

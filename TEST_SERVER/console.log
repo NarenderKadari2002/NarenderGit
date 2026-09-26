@@ -1,0 +1,19 @@
+2025-08-05 00:42:23.223142: BIP1990I: Integration server 'TEST_SERVER' starting initialization; version '12.0.3.0' (64-bit) 
+2025-08-05 00:42:23.264950: BIP9905I: Initializing resource managers. 
+Listening for transport dt_socket at address: 9997
+2025-08-05 00:42:27.617852: BIP9906I: Reading deployed resources. 
+2025-08-05 00:42:28.464692: BIP2866I: IBM App Connect Enterprise administration security is inactive. 
+2025-08-05 00:42:28.476156: BIP3132I: The HTTP Listener has started listening on port '7600' for 'RestAdmin http' connections. 
+2025-08-05 00:42:28.477636: BIP1991I: Integration server has finished initialization. 
+2025-08-05 00:43:37.139840: BIP2152I: Configuration message received. 
+2025-08-05 00:43:37.159216: BIP2155I: About to 'Initialize' the deployed resource 'message_set' of type 'Application'. 
+2025-08-05 00:43:37.422716: BIP9342I: Created compiled 'XMLNSC' schema file 'message_set/elements.bir'. 
+2025-08-05 00:43:37.528704: BIP2155I: About to 'Start' the deployed resource 'message_set' of type 'Application'. 
+An http endpoint was registered on port '7801', path '/message_set'.
+2025-08-05 00:43:37.633280: BIP3132I: The HTTP Listener has started listening on port '7801' for 'http' connections. 
+2025-08-05 00:43:37.633644: BIP1996I: Listening on HTTP URL '/message_set'. 
+Started native listener for HTTP input node on port 7801 for URL /message_set
+2025-08-05 00:43:37.634128: BIP2269I: Deployed resource 'msg_set_mf' (uuid='msg_set_mf',type='MessageFlow') started successfully. 
+2025-08-05 00:43:37.634276: BIP9332I: Application 'message_set' has been created successfully. 
+2025-08-05 00:43:37.634376: BIP9326I: The source 'message_setproject.generated.bar' has been successfully deployed. 
+2025-08-05 00:43:37.635880: BIP2154I: Integration server finished with Configuration message. 

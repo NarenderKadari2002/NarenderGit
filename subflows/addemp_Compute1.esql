@@ -1,0 +1,14 @@
+
+
+CREATE COMPUTE MODULE addemp_Compute1
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		DECLARE inref REFERENCE TO InputRoot.XMLNSC.Employee.[>];
+		 INSERT INTO DataSource.test.employee VALUES (inref.id,inref.name,inref.sal,inref.age);
+		 
+		 SET OutputRoot.XMLNSC.Result='Inserted Successfully';
+		 RETURN TRUE;
+
+	END;
+END MODULE;

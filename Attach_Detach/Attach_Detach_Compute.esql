@@ -1,0 +1,19 @@
+
+
+CREATE COMPUTE MODULE Attach_Detach_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		DECLARE inref REFERENCE TO InputRoot.XMLNSC.Inventory.Item.Price;
+		DETACH inref; -- Detach is used to remove a tag from inputroot
+		
+		CREATE FIELD OutputRoot.XMLNSC.NewInventory.Item;
+		DECLARE outref REFERENCE TO OutputRoot.XMLNSC.NewInventory.Item;
+		
+		ATTACH  inref TO InputRoot.XMLNSC.Inventory.Item AS NEXTSIBLING; -- Attach is used to attach the detached tag from inputroot. This attach can only be used with inputroot only.
+		
+		set outref =InputRoot.XMLNSC.Inventory;
+		
+    RETURN TRUE;
+	END;
+END MODULE;

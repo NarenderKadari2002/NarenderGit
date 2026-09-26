@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="complexType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="element1" type="xsd:int"/>
+      <xsd:element maxOccurs="unbounded" name="element2" type="xsd:int"/>
+      <xsd:element maxOccurs="unbounded" name="element3" type="xsd:int"/>
+      <xsd:element maxOccurs="unbounded" name="element4" type="xsd:int"/>
+      <xsd:element maxOccurs="unbounded" name="element5" type="xsd:int"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="Root" type="complexType">
+  </xsd:element>
+</xsd:schema>

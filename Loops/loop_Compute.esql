@@ -1,0 +1,102 @@
+
+
+CREATE COMPUTE MODULE loop_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		
+		
+		DECLARE count INTEGER;
+		
+		DECLARE str,str1 CHARACTER;
+		
+		DECLARE i INTEGER 1;
+		
+		DECLARE inref REFERENCE TO InputRoot.XMLNSC.Inventory.Item;
+		
+		
+		set count = CARDINALITY(inref.Item.[] /*inref.Item.[]*/); --cardinality is used to get the count of tags if we add . after the gtag will get the number of siblings in the parent tag
+		
+		---Loops----
+		/*CREATE FIELD OutputRoot.XMLNSC.NewInventory;
+		
+		DECLARE outref REFERENCE TO OutputRoot.XMLNSC.NewInventory;
+		
+		X:LOOP -- loop is used to itrate the condition n number of times and can be ended by manual intervention only. Hence we use LEAVE.
+			IF i<=count then
+				set outref.ITEM[i].ItemID=inref.Item[i].ItemID;
+				set outref.ITEM[i].Name=inref.Item[i].Name;
+				set outref.ITEM[i].Quantity=inref.Item[i].Quantity;
+				set outref.ITEM[i].Price=inref.Item[i].Price;
+			set i=i+1;
+			--ITERATE X;--Iterate is optional it is used to iterate the loop
+			ELSE
+				LEAVE X; --Leave is used to exit the loop labeled X
+			END IF;
+		END LOOP;*/
+		
+	/*	CREATE FIELD OutputRoot.XMLNSC.NewInventory;
+		
+		DECLARE outref REFERENCE TO OutputRoot.XMLNSC.NewInventory;
+		
+			--CREATE FIRSTCHILD OF outref.Extra ;
+			--CREATE LASTCHILD OF outref.Extra ;
+			
+			move inref TO inref.Item.[<];
+			
+			set outref =inref;*/
+		-----Repeat---- --It is used to repeat set of statements until th condition satifies
+		
+		/*CREATE FIELD OutputRoot.XMLNSC.NewInventory;
+		
+		DECLARE outref REFERENCE TO OutputRoot.XMLNSC.NewInventory;
+		
+		REPEAT
+			
+			 set outref.ITEM[i].ItemID=inref.Item[i].ItemID;
+				set outref.ITEM[i].Name=inref.Item[i].Name;
+				set outref.ITEM[i].Quantity=inref.Item[i].Quantity;
+				set outref.ITEM[i].Price=inref.Item[i].Price;
+			    set i=i+1;
+			
+		UNTIL i=count
+			
+		END REPEAT; */
+		
+		-----While----- -- It is used to uterate the statements untill the condition satisfies when we dont know how many tuimes needs to be iterated.
+		
+		/*CREATE FIELD OutputRoot.XMLNSC.NewInventory;
+		
+		DECLARE outref REFERENCE TO OutputRoot.XMLNSC.NewInventory;
+				
+		WHILE LASTMOVE(inref) DO
+			
+			    set outref.ITEM[i].ItemID=inref.ItemID;
+				set outref.ITEM[i].Name=inref.Name;
+				set outref.ITEM[i].Quantity=inref.Quantity;
+				set outref.ITEM[i].Price=inref.Price;
+			    set i=i+1;
+			    MOVE inref NEXTSIBLING;
+			
+		END WHILE;*/
+		
+		CREATE FIELD OutputRoot.XMLNSC.NewInventory;
+		
+		DECLARE outref REFERENCE TO OutputRoot.XMLNSC.NewInventory;
+		
+		
+		
+		FOR inref AS InputRoot.XMLNSC.Inventory.Item[]  DO  --FOR loop is used to move to next sibling directly instead of using MOVE TO NEXTSIBLING while iterating everytime. For the FOR loop always needs to give array referencwe.
+			
+			 set outref.ITEM[i].ItemID=inref.ItemID;
+				set outref.ITEM[i].Name=inref.Name;
+				set outref.ITEM[i].Quantity=inref.Quantity;
+				set outref.ITEM[i].Price=inref.Price;
+				set i=i+1;
+			
+		END FOR;
+
+		
+		Return TRUE;
+	END;
+END MODULE;

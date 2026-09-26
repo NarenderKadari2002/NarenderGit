@@ -1,0 +1,67 @@
+
+==============================================
+
+!Tue Aug 05 00:43:37 IST 2025
+
+Processing file message_set\msg_set_mf.msgflow.
+Successfully added file message_set\msg_set_mf.msgflow to BAR file.
+
+==============================================
+
+!Tue Aug 05 00:43:37 IST 2025
+
+Processing file message_set\application.descriptor.
+Successfully added file message_set\application.descriptor to BAR file.
+Elapsed time: 0.001 second(s).
+
+Successfully added file message_set\application.descriptor to BAR file.
+
+==============================================
+
+!Tue Aug 05 00:43:37 IST 2025
+
+Processing file message_set\application.descriptor.
+Successfully added file message_set\application.descriptor to BAR file.
+Elapsed time: 0 second(s).
+
+Successfully added file message_set\application.descriptor to BAR file.
+
+==============================================
+
+!Tue Aug 05 00:43:37 IST 2025
+
+Processing file message_set\msg_set_mf_Compute.esql.
+Successfully added file message_set\msg_set_mf_Compute.esql to BAR file.
+
+==============================================
+
+!Tue Aug 05 00:43:37 IST 2025
+
+Processing file message_set\msg_set_mf_Compute2.esql.
+Successfully added file message_set\msg_set_mf_Compute2.esql to BAR file.
+
+==============================================
+
+!Tue Aug 05 00:43:37 IST 2025
+Generating .xsdzip file for message set "elements" 
+
+Generating schema for no XML Wire format
+Generating schema using the lax option
+
+
+Processing File : "/elements/elements/elements_file.mxsd"
+
+Saving File : "/elements/.GeneratedSchemas/elements_file.xsd" 
+
+Saving file "/elements/.KeywordsFile/meta-inf/keywords.txt" 
+
+Saving file "/elements/elements/messageSet.mset" 
+
+
+Elapsed time: 0.013 seconds
+Warnings: 0
+
+
+Operation complete
+
+

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <!-- Root element -->
+  <xs:element name="Item">
+    <xs:complexType>
+      <xs:sequence>
+        <!-- ItemID: integer type -->
+        <xs:element name="ItemID" type="xs:integer"/>
+        
+        <!-- Name: string type -->
+        <xs:element name="Name" type="xs:string"/>
+        
+        <!-- Quantity: integer type -->
+        <xs:element name="Quantity" type="xs:integer"/>
+        
+        <!-- Price: decimal type for currency values -->
+        <xs:element name="Price" type="xs:decimal"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
