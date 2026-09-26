@@ -1,3 +1,4 @@
+-----Common Exception handler Code ------------------
 BROKER SCHEMA ESBCommonLib
 
 CREATE COMPUTE MODULE CommonErrorHandler
