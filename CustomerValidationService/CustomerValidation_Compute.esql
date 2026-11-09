@@ -1,0 +1,33 @@
+CREATE COMPUTE MODULE CustomerValidation_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		CALL CopyMessageHeaders();
+		DECLARE inref REFERENCE TO InputRoot.JSON.Data.createCustomerOnboarding;
+		DECLARE custDetails ROW;
+		DECLARE custFetchQuery CHARACTER;
+		SET custFetchQuery = 'SELECT * FROM FT_CUSTOMERS_NEW WHERE ACCOUNTNUMBER ='''|| inref.accountNumber ||'''';
+  		SET custDetails = PASSTHRU(custFetchQuery);
+		IF EXISTS(custDetails.[]) THEN
+			THROW USER EXCEPTION CATALOG 'Onboarding Error' MESSAGE 1001 VALUES ('Consumer is already Onboarded with the Accountnumber '|| inref.accountNumber);
+		ELSE
+			CALL CustOnboardingProc(inref.accountNumber,inref.customerId,inref.appId,inref.allowNeft,inref.allowRtgs,inref.allowImps,inref.allowUpi,inref.is24x7Allowed);
+			SET OutputRoot.JSON.Data.OnboardResponse='Consumer has been onboarded successfully';
+		END IF;
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+END MODULE;
+
+CREATE PROCEDURE CustOnboardingProc  (IN P_ACCOUNTNUMBER CHARACTER,IN P_CUSTOMERID CHARACTER,IN P_APPID CHARACTER,IN P_ALLOW_NEFT CHARACTER,IN P_ALLOW_RTGS CHARACTER,IN P_ALLOW_IMPS CHARACTER,IN P_ALLOW_UPI CHARACTER,IN P_IS24X7ALLOWED CHARACTER)
+LANGUAGE DATABASE
+EXTERNAL NAME "SYSTEM.INSERT_CUSTOMER";
