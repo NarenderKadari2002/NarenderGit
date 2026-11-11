@@ -1,0 +1,40 @@
+DECLARE Log4jInitialized SHARED BOOLEAN FALSE;
+DECLARE msgflow SHARED CHARACTER 'log4j.msgflow';
+DECLARE loggerName SHARED CHARACTER 'dco_debug';
+DECLARE logLevel SHARED CHARACTER 'DEBUG';
+
+CREATE COMPUTE MODULE log4j_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		CALL CopyMessageHeaders();
+		DECLARE configPath CHARACTER 'C:/log4jtemp/Log4jConfigurationFile.xml';
+		DECLARE logStatus BOOLEAN FALSE;
+		SET Environment.InputRequest = CAST(ASBITSTREAM(InputRoot.XMLNSC OPTIONS FolderBitStream CCSID 1208 ENCODING 546) AS CHARACTER CCSID 1208 ENCODING 546);
+		BEGIN ATOMIC 
+			IF Log4jInitialized = FALSE THEN
+				CALL init_log4j(configPath) INTO Log4jInitialized ;
+			END IF;
+		END;
+		CALL write_log(msgflow,loggerName,logLevel,Environment.InputRequest) INTO logStatus;
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+END MODULE;
+
+CREATE PROCEDURE init_log4j(IN var_path CHARACTER)RETURNS BOOLEAN 
+LANGUAGE JAVA
+EXTERNAL NAME"com.ibm.broker.IAM3.Log4jNode.initLog4j";
+
+CREATE PROCEDURE write_log ( in mfname CHARACTER, in logger_name CHARACTER,in level CHARACTER,in data CHARACTER)RETURNS BOOLEAN
+ LANGUAGE JAVA
+EXTERNAL NAME"com.ibm.broker.IAM3.Log4jNode.log";
+
